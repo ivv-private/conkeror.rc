@@ -3,7 +3,8 @@ require("string.js");
 function dict_mini_buffer_init (buffer) {
     // TODO: make singleton
     buffer.dict_mouseclick = function (event) {
-        let selected = trim_whitespace(buffer.top_frame.getSelection().toString());
+        var selc = buffer.focused_selection_controller;
+        var selected = trim_whitespace(selc.getSelection(selc.SELECTION_NORMAL));
         if (event.button == 0 || !selected) {
             return;
         }
